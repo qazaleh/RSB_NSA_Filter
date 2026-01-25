@@ -35,6 +35,31 @@ from typing import Dict, Any
 
 import numpy as np
 
+from pathlib import Path
+import urllib.request
+
+def ensure_mnist(raw_dir: Path) -> None:
+    urls = {
+        "train-images-idx3-ubyte.gz": "https://storage.googleapis.com/cvdf-datasets/mnist/train-images-idx3-ubyte.gz",
+        "train-labels-idx1-ubyte.gz": "https://storage.googleapis.com/cvdf-datasets/mnist/train-labels-idx1-ubyte.gz",
+        "t10k-images-idx3-ubyte.gz": "https://storage.googleapis.com/cvdf-datasets/mnist/t10k-images-idx3-ubyte.gz",
+        "t10k-labels-idx1-ubyte.gz": "https://storage.googleapis.com/cvdf-datasets/mnist/t10k-labels-idx1-ubyte.gz",
+    }
+
+    raw_dir.mkdir(parents=True, exist_ok=True)
+
+    for fname, url in urls.items():
+        out = raw_dir / fname
+        if not out.exists():
+            print(f"[DOWNLOAD] {fname}")
+            urllib.request.urlretrieve(url, out)
+        else:
+            print(f"[OK] Found {fname}")
+
+
+
+raw_dir = Path("data/RawData")
+ensure_mnist(raw_dir)
 
 def run_cmd(cmd: list[str]) -> None:
     print("\n>>>", " ".join(cmd))
@@ -77,12 +102,8 @@ def main() -> None:
     # ----------------------------
     # 1) Generate datasets if missing
     # ----------------------------
-    if not npz_exists(evenodd_dir):
-        run_cmd([sys.executable, "src/make_mnadd_evenodd.py", "--raw_dir", str(raw_dir), "--out_dir", str(evenodd_dir)])
-    else:
-        print(f"[OK] Dataset exists: {evenodd_dir}")
-
     if not npz_exists(largesmall_dir):
+        run_cmd([sys.executable, "src/make_mnadd_evenodd.py", "--raw_dir", str(raw_dir)])
         run_cmd([sys.executable, "src/make_mnadd_largesmall.py", "--raw_dir", str(raw_dir), "--out_dir", str(largesmall_dir)])
     else:
         print(f"[OK] Dataset exists: {largesmall_dir}")
@@ -222,7 +243,7 @@ def main() -> None:
     csv_path = summary_dir / "summary.csv"
     import csv
     from make_plots import make_plots
-    
+
     with open(csv_path, "w", newline="", encoding="utf-8") as f:
         w = csv.DictWriter(f, fieldnames=["setting", "acc_sum", "acc_concepts_both", "rs_freq", "rs_rate_given_correct"])
         w.writeheader()
