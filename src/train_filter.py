@@ -184,7 +184,7 @@ def main() -> None:
     ap.add_argument("--data_dir", type=str, default="data/mnadd_evenodd")
     ap.add_argument("--baseline_ckpt", type=str, default="results/baseline_cnn.pt")
     ap.add_argument("--out_dir", type=str, default="results_filter")
-    ap.add_argument("--epochs", type=int, default=10)
+    ap.add_argument("--epochs", type=int, default=8)
     ap.add_argument("--batch_size", type=int, default=256)
     ap.add_argument("--lr", type=float, default=1e-3)
     ap.add_argument("--hidden", type=int, default=64)
