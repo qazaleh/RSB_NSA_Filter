@@ -1,9 +1,9 @@
 setting,acc_sum,acc_concepts_both,rs_freq,rs_rate_given_correct
-evenodd_baseline_gen_clean,0.7954,0.7803,0.0151,0.018984158913754087
-evenodd_baseline_ood_clean,0.2234,0.2094,0.014,0.06266786034019696
-largesmall_baseline_gen_clean,0.8613,0.8537,0.0076,0.00882387089283641
-largesmall_baseline_ood_clean,0.0006,0.0,0.0006,1.0
-evenodd_baseline_gen_noisy,0.7954,0.7803,0.0151,0.018984158913754087
-evenodd_baseline_ood_noisy,0.2234,0.2094,0.014,0.06266786034019696
-evenodd_filtered_gen_noisy,0.8448,0.8257,0.0191,0.022608901515151516
-evenodd_filtered_ood_noisy,0.1667,0.1558,0.0109,0.0653869226154769
+evenodd_baseline_gen_clean,0.6824,0.6645,0.0179,0.02623094958968347
+evenodd_baseline_ood_clean,0.1665,0.1529,0.0136,0.08168168168168168
+largesmall_baseline_gen_clean,0.7372,0.7209,0.0163,0.022110689093868693
+largesmall_baseline_ood_clean,0.0016,0.0,0.0016,1.0
+evenodd_baseline_gen_noisy,0.6824,0.6645,0.0179,0.02623094958968347
+evenodd_baseline_ood_noisy,0.1665,0.1529,0.0136,0.08168168168168168
+evenodd_filtered_gen_noisy,0.8085,0.7689,0.0396,0.04897959183673469
+evenodd_filtered_ood_noisy,0.1164,0.1065,0.0099,0.08505154639175258
