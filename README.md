@@ -90,7 +90,7 @@ This command:
   
 ---
 
-## Full Reproduction (Traning from scratch)
+## Full Reproduction (Traning from scratch take a long time)
 To retrain all models and overwrite existing results:
 ```bash
 python main.py --force --epochs_baseline 5 --epochs_filter 10
