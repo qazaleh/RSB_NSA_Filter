@@ -268,7 +268,7 @@ def main() -> None:
 
             running_loss += float(loss.item()) * x.size(0)
             n_seen += x.size(0)
-            pbar.set_postfix(loss=f"{loss.item():.4f}
+            pbar.set_postfix(loss=f"{loss.item():.4f}")
 
         avg_loss = running_loss / max(1, n_seen)
 
