@@ -14,6 +14,8 @@ import numpy as np
 import torch
 import torch.nn as nn
 from torch.utils.data import Dataset, DataLoader
+from tqdm import tqdm
+
 
 # Loads MNAdd-EvenOdd .npz files and returns (image, d1_label, d2_label, sum_label).
 class MNAddDataset(Dataset):
@@ -169,11 +171,18 @@ def main() -> None:
 
     # Train loop
     for epoch in range(1, args.epochs + 1):
+        
         model.train()
         running_loss = 0.0
         n_seen = 0
+        pbar = tqdm(
+        train_loader,
+        desc=f"Train epoch {epoch}",
+        leave=True,
+    )
 
         for x, d1, d2, _ in train_loader:
+            pbar.update(1)
             x = x.to(device)
             d1 = d1.to(device)
             d2 = d2.to(device)
@@ -186,6 +195,7 @@ def main() -> None:
 
             running_loss += float(loss.item()) * x.size(0)
             n_seen += x.size(0)
+            pbar.set_postfix(loss=f"{loss.item():.4f}")
 
         avg_loss = running_loss / max(1, n_seen)
 
