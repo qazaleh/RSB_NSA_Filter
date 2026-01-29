@@ -15,10 +15,5 @@ data/
 *.gz
 *.npz
 
-# Results (keep plots & summaries only)
-results/
-results_filter/
-results_largesmall/
-
 # OS
 .DS_Store
