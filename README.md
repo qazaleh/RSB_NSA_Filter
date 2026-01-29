@@ -59,11 +59,17 @@ This is a simplified adaptation, not a full NSA system.
   
 ---
 
-## Recreate environment
+## Setup
+
+Recreate the environment using either Conda or pip:
 
 ```bash
 conda env create -f environment.yml
 conda activate rsb-nsa
+
+# OR
+
+pip install -r requirements.txt
 ```
 ---
 
