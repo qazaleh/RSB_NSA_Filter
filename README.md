@@ -53,7 +53,6 @@ This is a simplified adaptation, not a full NSA system.
 
 ## Environment
 
-- OS: macOS
 - Python: 3.10
 - Framework: PyTorch (CPU-only)
 - Environment manager: Conda
